@@ -42,7 +42,7 @@ for(cit of cities){
 }
 
 function mm(ciity){
-    fetch(`http://api.aladhan.com/v1/timingsByCity?country=EG&city=${ciity}`)
+    fetch(`https://api.aladhan.com/v1/timingsByCity?country=EG&city=${ciity}`)
 .then(req =>{
     if(req.ok){
    return req.json()
@@ -59,24 +59,26 @@ function mm(ciity){
             //  معاد اذان العصر
             let x=post.timings.Asr.slice(0,2)
             let y=x-12
-          asr_time.innerHTML= y + post.timings.Asr.slice(2,5)
+            let s="PM"
+          asr_time.innerHTML=` ${y} ${post.timings.Asr.slice(2,5)}  ${s}  ` 
               // معاد اذان الظهر
             // let x2=post.timings.Dhuhr.slice(0,2)
             // let y2=x2-12
-           dhuhr_time.innerHTML=  post.timings.Dhuhr.slice(0,5)
+            let a="AM"
+           dhuhr_time.innerHTML= `${ post.timings.Dhuhr.slice(0,5)} ${s}`
            //  معاد اذان العشاء
             let x3=post.timings.Isha.slice(0,2)
             let y3=x3-12
-            isha_time.innerHTML=y3 + post.timings.Isha.slice(2,5)
+            isha_time.innerHTML= `${y3} ${post.timings.Isha.slice(2,5) } ${s}` 
            //  معاد اذان المغرب
             let x4=post.timings.Maghrib.slice(0,2)
             let y4=x4-12
-            maghrib_time.innerHTML=y4 + post.timings.Maghrib.slice(2,5)
+            maghrib_time.innerHTML=`${y4} ${post.timings.Maghrib.slice(2,5)} ${s}`
            //  معاد اذان الفجر
-            fajer_time.innerHTML= post.timings.Fajr.slice(0,5) 
+            fajer_time.innerHTML=`${ post.timings.Fajr.slice(0,5)} ${a}` 
            // معاد اذان الشروق
 
-            sunset_time.innerHTML= post.timings.Sunrise.slice(0,5)
+            sunset_time.innerHTML=`${post.timings.Sunrise.slice(0,5)} ${a}` 
     
                         // }
   } )
